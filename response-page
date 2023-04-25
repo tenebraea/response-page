@@ -1,30 +1,54 @@
 
 
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Fetch Page Information</title>
+</head>
+<body>
+  <h1>Fetch Page Information</h1>
+  <button id="fetch-button">Fetch Information</button>
+
+  <script>
+    const fetchButton = document.getElementById('fetch-button');
+    fetchButton.addEventListener('click', () => {
+      fetch('https://tenebraea.github.io/')
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.text();
+        })
+        .then(html => {
+          console.log(html);
+          // Parse the HTML content or do something with it
+        })
+        .catch(error => {
+          console.error('There was a problem fetching the page:', error);
+        });
+    });
+  </script>
+</body>
+</html>
+
 
 <script>
-  const form = document.querySelector('#contact-form');
-form.addEventListener('submit', (event) => {
-  event.preventDefault();
-  const name = form.elements['name'].value;
-  const email = form.elements['email'].value;
-  const message = form.elements['message'].value;
-  const data = { name, email, message };
-  const options = {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(data),
-  };
-  fetch('/process-form', options)
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      console.log('Form data sent successfully');
-      // Optionally redirect to the response page
-      window.location.href = '/response-page';
-    })
-    .catch(error => {
-      console.error('There was an error sending the form data:', error);
-    });
-});
+fetch('https://tenebraea.github.io/')
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    return response.text();
+  })
+  .then(html => {
+    console.log(html);
+    // Parse the HTML content or do something with it
+  })
+  .catch(error => {
+    console.error('There was a problem fetching the page:', error);
+  });
+
 </script>
+
+
