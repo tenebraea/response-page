@@ -33,22 +33,6 @@
 </html>
 
 
-<script>
-fetch('https://tenebraea.github.io/')
-  .then(response => {
-    if (!response.ok) {
-      throw new Error('Network response was not ok');
-    }
-    return response.text();
-  })
-  .then(html => {
-    console.log(html);
-    // Parse the HTML content or do something with it
-  })
-  .catch(error => {
-    console.error('There was a problem fetching the page:', error);
-  });
 
-</script>
 
 
